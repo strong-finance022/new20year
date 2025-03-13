@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momentos Especiais</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffecf2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+        }
+        .slider-container {
+            width: 80vw;
+            max-width: 400px;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 15px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .slider-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .slider-container img.active {
+            opacity: 1;
+        }
+        .text-box, .link-box {
+            width: 85vw;
+            max-width: 500px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: left;
+            line-height: 1.4;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+        .text-box {
+            min-height: 100px;
+        }
+        .link-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .link-box input {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 8px;
+            text-align: center;
+        }
+        .link-button {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #d63384;
+            padding: 8px 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin-top: 10px;
+            display: none;
+            transition: background-color 0.3s ease;
+        }
+        .link-button:hover {
+            background-color: #b3226c;
+        }
+        .next-button {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #d63384;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .next-button:hover {
+            background-color: #b3226c;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Momentos Especiais</h2>
+
+    <div class="slider-container">
+        <img src="praia (3).png" class="active" alt="Momento 1">
+        <img src="praia (4).png" alt="Momento 2">
+        <img src="praia6.png" alt="Momento 3">
+    </div>
+
+    <div class="text-box" contenteditable="true">
+        Escreva aqui sobre esse momento especial...
+    </div>
+
+    <div class="link-box">
+
+     <a href="https://drive.google.com/file/d/19ls-Sk43yAGDSUr-nhSWbfke_hkYsRge/view?usp=drive_link">CLIQUE AQUI PARA MAIS UMA SURPRESA</a>
+    </div>
+
+    <a href="teamo.html" class="next-button">Ir para a próxima página 👉</a>
+
+    <script>
+        const images = document.querySelectorAll(".slider-container img");
+        let index = 0;
+
+        function changeImage() {
+            images[index].classList.remove("active");
+            index = (index + 1) % images.length;
+            images[index].classList.add("active");
+        }
+
+        setInterval(changeImage, 3000); // Muda a cada 3 segundos
+
+        // Atualiza o link
+        const linkInput = document.getElementById("linkInput");
+        const linkButton = document.getElementById("linkButton");
+
+        linkInput.addEventListener("input", function () {
+            if (linkInput.value.trim() !== "") {
+                linkButton.style.display = "inline-block";
+                linkButton.href = linkInput.value;
+            } else {
+                linkButton.style.display = "none";
+            }
+        });
+    </script>
+
+</body>
+</html>

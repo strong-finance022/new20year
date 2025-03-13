@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto Especial</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Altura ajustada */
+            background-color: #ffecf2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+        }
+        .image-container {
+            width: 60vw;
+            max-width: 300px; /* Reduzi o tamanho da imagem */
+            height: auto;
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px; /* Menos espaço abaixo da imagem */
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .text-box {
+            width: 85vw;
+            max-width: 500px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            color: #333;
+            font-size: 16px;
+            text-align: left;
+            line-height: 1.4;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .list-container {
+            display: flex;
+            justify-content: space-between;
+            width: 85vw;
+            max-width: 500px;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .list-column {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 48%;
+        }
+        .list-item {
+            background-color: white;
+            padding: 8px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #d63384;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .next-button {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #d63384;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .next-button:hover {
+            background-color: #b3226c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img src="teainicial.png" alt="Imagem especial">
+    </div>
+
+    <div class="text-box" contenteditable="true">
+        <p>Tipo amor, feliz aniversário! ❤️</p>
+        <p>Eu te amo demais, e estou tentando ao máximo te surpreender. Espero que perceba o quão especial você é para mim! É simples, mas feito de coração.</p>
+        <p>Eu te amo tanto que nem consigo descrever o quanto isso cresce a cada dia. Acho que com isso já deu pra perceber que penso muito em você!</p>
+        <p>Quero ver seu crescimento, tanto profissional quanto pessoal (se bem que crescer mais de tamanho acho difícil kkkk). Quero estar ao seu lado em todos os momentos, bons e ruins.</p>
+        <p>Eu amo ver tudo que você conquista e o quanto brilha! Amo te escutar cantar, te olhar nos olhos e, acima de tudo, amo te amar. Espero que goste desse pequeno presente e lembre-se: eu te amo muito! ❤️</p>
+    </div>
+
+    <h3>ALGUNS MOTIVOS PARA TE AMAR:</h3>
+    <div class="list-container">
+        <div class="list-column">
+            <div class="list-item">SEU SORRISO</div>
+            <div class="list-item">SEUS OLHOS</div>
+            <div class="list-item">SUA VOZ</div>
+            <div class="list-item">SEU JEITINHO</div>
+            <div class="list-item">SEU BRILHO</div>
+        </div>
+        <div class="list-column">
+            <div class="list-item">SUA BESTAIAÇÃO</div>
+            <div class="list-item">SUA GENEROSIDADE</div>
+            <div class="list-item">SUA SAFADEZAAAAAA</div>
+            <div class="list-item">SEU FOGO</div>
+            <div class="list-item">E POR VOCÊ SER VOCÊ</div>
+        </div>
+    </div>
+
+    <a href="momentos.html" class="next-button">Ir para a próxima página 👉</a>
+
+</body>
+</html>

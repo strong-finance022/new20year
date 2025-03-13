@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Teste de Conhecimento</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .question-container {
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+        .question {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 2px solid pink;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 350px;
+            cursor: pointer;
+            background-color: #f7f7f7;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        .option:hover {
+            background-color: #f0d1d1;
+        }
+        .message {
+            font-size: 18px;
+            color: pink;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .next-button, .back-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: pink;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .next-button:hover, .back-button:hover {
+            background-color: hotpink;
+        }
+        .hidden {
+            display: none;
+        }
+        .surprise-message {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .surprise-link {
+            font-size: 18px;
+            font-weight: bold;
+            color: blue;
+            text-decoration: none;
+        }
+        .surprise-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="question-container">
+        <div class="question" id="question"></div>
+        <div class="options-container" id="options"></div>
+        <div class="message" id="message"></div>
+        <button class="next-button hidden" id="nextButton" onclick="nextQuestion()">Próximo</button>
+        <button class="back-button hidden" id="backButton" onclick="backToQuestion()">Voltar</button>
+    </div>
+
+    <div class="surprise-message hidden" id="surprise">
+        Parabéns! Você completou o quiz! 🎉<br>
+        <a class="surprise-link" href="surpresa.html">Clique aqui para sua surpresa! 🎁</a>
+    </div>
+
+    <script>
+        const questions = [
+            { 
+                question: "Qual foi o primeiro presente que eu te dei?", 
+                options: [
+                    { text: "Buquê de Van gogh", correct: false },
+                    { text: "Quadro da Frozen", correct: true },
+                    { text: "Nada", correct: false }
+                ]
+            },
+            { 
+                question: "Que Filme remete a gente?", 
+                options: [
+                    { text: "Moana", correct: false },
+                    { text: "Frozen", correct: true },
+                    { text: "Enrolados", correct: false }
+                ]
+            },
+            { 
+                question: "Do que você me cura?", 
+                options: [
+                    { text: "Da Ansiedade", correct: true },
+                    { text: "Da dor", correct: false },
+                    { text: "Do medo", correct: false }
+                ]
+            },
+            { 
+                question: "Que Sorvete gostamos mais?", 
+                options: [
+                    { text: "Açai", correct: true },
+                    { text: "flocos", correct: false },
+                    { text: "Chocolate", correct: false }
+                ]
+            },
+            { 
+                question: "Qual música remete a gente?", 
+                options: [
+                    { text: "Te Vivo", correct: true },
+                    { text: "Que sorte a nossa", correct: false },
+                    { text: "tudo que você quiser", correct: false }
+                ]
+            },
+            { 
+                question: "Que música tu me declarou na escola?", 
+                options: [
+                    { text: "Dandelions", correct: true },
+                    { text: "Te vivo", correct: false },
+                    { text: "Those eyes", correct: false }
+                ]
+            },
+            { 
+                question: "O que te faz lembrar de mim?", 
+                options: [
+                    { text: "Lua", correct: true },
+                    { text: "Sol", correct: false },
+                    { text: "Estrelas", correct: false }
+                ]
+            },
+            { 
+                question: "Que data se tornamos melhores amigas?", 
+                options: [
+                    { text: "09/01/22", correct: true },
+                    { text: "10/01/22", correct: false },
+                    { text: "10/01/22", correct: false }
+                ]
+            },
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function loadQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById("question").innerText = question.question;
+            const optionsContainer = document.getElementById("options");
+            optionsContainer.innerHTML = "";
+            document.getElementById("message").innerText = "";
+            document.getElementById("nextButton").classList.add("hidden");
+            document.getElementById("backButton").classList.add("hidden");
+
+            question.options.forEach(option => {
+                const optionElement = document.createElement("div");
+                optionElement.classList.add("option");
+                optionElement.innerText = option.text;
+                optionElement.onclick = () => checkAnswer(option);
+                optionsContainer.appendChild(optionElement);
+            });
+        }
+
+        function checkAnswer(option) {
+            const messageElement = document.getElementById("message");
+            if (option.correct) {
+                messageElement.innerText = "Resposta correta!";
+                messageElement.style.color = "green";
+                document.getElementById("nextButton").classList.remove("hidden");
+                document.getElementById("backButton").classList.add("hidden");
+            } else {
+                messageElement.innerText = "Que pena, está errado. Tente novamente!";
+                messageElement.style.color = "red";
+                document.getElementById("backButton").classList.remove("hidden");
+                document.getElementById("nextButton").classList.add("hidden");
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showSurprise();
+            }
+        }
+
+        function backToQuestion() {
+            loadQuestion();
+        }
+
+        function showSurprise() {
+            document.querySelector(".question-container").style.display = "none";
+            document.getElementById("surprise").classList.remove("hidden");
+        }
+
+        loadQuestion();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa!</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffecf2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+        .slider-container {
+            width: 80vw;
+            max-width: 400px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 15px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .slider-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .slider-container img.active {
+            opacity: 1;
+        }
+        .text-box {
+            width: 80vw;
+            max-width: 400px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            color: #d63384;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .button-link {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #d63384;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .button-link:hover {
+            background-color: #b3226c;
+        }
+        #secondButton {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slider-container">
+        <img src="praia7.png" class="active" alt="Imagem 1">
+        <img src="praia (3).png" alt="Imagem 2">
+        <img src="praia (5).png" alt="Imagem 3">
+    </div>
+
+    <div class="text-box">Você merece essa surpresa especial!</div>
+
+    <a id="firstButton" href="https://drive.google.com/file/d/1suHSsFKBy4p05c34RqSbrIPApZ6m7oUy/view?usp=drive_link" class="button-link" onclick="saveVisit()">Clique aqui para ver a surpresa 🎁</a>
+
+    <a id="secondButton" href="mensagem.html" class="button-link">Agora clica para a próxima aba 👉</a>
+
+    <script>
+        const images = document.querySelectorAll(".slider-container img");
+        let index = 0;
+
+        function changeImage() {
+            images[index].classList.remove("active");
+            index = (index + 1) % images.length;
+            images[index].classList.add("active");
+        }
+
+        setInterval(changeImage, 3000); // Muda a cada 3 segundos
+
+        function saveVisit() {
+            localStorage.setItem("visitedSurprise", "true");
+        }
+
+        function checkVisit() {
+            if (localStorage.getItem("visitedSurprise") === "true") {
+                document.getElementById("secondButton").style.display = "inline-block";
+            }
+        }
+
+        window.onload = checkVisit;
+    </script>
+
+</body>
+</html>
