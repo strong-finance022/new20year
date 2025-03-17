@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Interativa</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(to bottom, #ff69b4, #ffffff);
+            text-align: center;
+            color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 380px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        h2 {
+            margin: 10px 0;
+            color: #ff69b4;
+            font-size: 24px;
+        }
+        p {
+            color: black;
+            font-size: 18px;
+        }
+        .message-box {
+            background: #ffe6f2;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 2px solid #ff69b4;
+        }
+        .theme {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 20px;
+            color: #ff1493;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn {
+            background: #fb85c0;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn:disabled {
+            background: gray;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="image" src="fotosnova/arvorerosa.jpeg" alt="Imagem">
+        <h2 id="title">TE AMO</h2>
+        <div class="message-box">
+            <p id="text">Qualquer um pode te dizer que te ama... Porém, eu te poesio.</p>
+        </div>
+        <p class="theme">Tema: Amor e Poesia</p>
+        <div class="navigation">
+            <button class="btn" id="prev" onclick="prevImage()" disabled>&#9664; Voltar</button>
+            <button class="btn" id="next" onclick="nextImage()">Avançar &#9654;</button>
+        </div>
+        <button class="btn" id="nextPage" onclick="openNewPage()" style="display: none; margin-top: 15px;">Ir para outra aba</button>
+    </div>
+    <script>
+        const images = [
+            { src: "fotosnova/arvorerosa.jpeg", title: "TE AMO", text: "Qualquer um pode te dizer que te ama... Porém, eu te poesio.", theme: "Amor e Poesia" },
+            { src: "fotosnova/noiteestrelada.jpeg", title: "Ah, As Estrelas.", text: "Se as estrelas fossem tão lindas quanto teu sorriso, eu passaria a noite olhando para elas.", theme: "Encanto Noturno" },
+            { src: "fotosnova/meninlua.jpeg", title: "Como eu poderia não Te amar", text: "Amei tudo em você, talvez demais, mas como não amar? Se você é tudo que eu sempre quis.", theme: "Sentimentos Profundos" },
+            { src: "fotosnova/girassois.jpeg", title: "Ah, Você...", text: "Desculpe Van Gogh, pois seus olhos, seu sorriso, seu olhar... ultrapassam todas suas obras de arte.", theme: "Beleza Inigualável" },
+            { src: "fotosnova/galaxia.jpeg", title: "Sobre me Apaixonar", text: "Se eu te olhar 100 vezes, acredite, pois em cada uma delas eu me apaixonaria novamente.", theme: "Encanto Eterno" },
+            { src: "fotosnova/meninaeraposasentada.jpeg", title: "Você...", text: "Você me salvou de todas as maneiras possíveis, sempre está para me salvar. Por isso te tenho como minha cura.", theme: "Cuidado e Proteção" },
+            { src: "fotosnova/casaelua.jpeg", title: "Chave", text: "Eu diria que você tinha a chave do meu coração, mas você nunca precisou dela.", theme: "Destino e Conexão" },
+            { src: "fotosnova/raoposaa.jpeg", title: "Palavras...", text: "Diante de tudo isso... Ainda sinto que não é o suficiente, pois ainda me faltam palavras para descrever o que eu sinto por você.", theme: "Sentimentos Inefáveis" },
+            { src: "fotosnova/arvoremonte.jpeg", title: "Amar Demais", text: "A verdade é que é muito simples, chegar e te entregar uma flor, te passar uma cantada que viu na internet, te fazer vários poemas genéricos, mas eu que sou louca te fiz um site, para que você sempre lembre da sua importância para mim.", theme: "Amor Infinito" }
+        ];
+        
+        let index = 0;
+        
+        function updateContent() {
+            document.getElementById("image").src = images[index].src;
+            document.getElementById("title").textContent = images[index].title;
+            document.getElementById("text").textContent = images[index].text;
+            document.querySelector(".theme").textContent = "Tema: " + images[index].theme;
+            
+            document.getElementById("prev").disabled = index === 0;
+            document.getElementById("next").style.display = index === images.length - 1 ? "none" : "inline-block";
+            document.getElementById("nextPage").style.display = index === images.length - 1 ? "block" : "none";
+        }
+        
+        function nextImage() {
+            if (index < images.length - 1) {
+                index++;
+                updateContent();
+            }
+        }
+        
+        function prevImage() {
+            if (index > 0) {
+                index--;
+                updateContent();
+            }
+        }
+        
+        function openNewPage() {
+            window.open("texto.html", "_blank");
+        }
+    </script>
+</body>
+</html>
