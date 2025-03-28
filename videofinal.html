@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa Rosa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: pink;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            color: pink;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            width: 100%;
+            height: auto;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        a {
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #ff3385;
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 15px;
+                height: auto;
+            }
+            .button {
+                width: 100%;
+                padding: 15px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #ff3385;">Mais uma surpresa</h1>
+        <p style="color: #cc0077;">
+            Só queria mesmo deixar mais claro ainda pra você o porquê de te amar tanto, 
+            apesar de você já saber. Mas é algo que vem do fundo do meu coração, é sincero! 
+            Tudo o que eu fiz aqui é feito com amor e dedicação, cada detalhe foi pensado com 
+            carinho. E esse é apenas mais um motivo pelo qual te amo tanto. 
+            Não é só uma palavra, é um sentimento profundo que cresce a cada dia. 
+            Você é a razão do meu sorriso e a luz que ilumina os meus dias. 
+            Quero que saiba que estou aqui para te apoiar, te fazer feliz e te dar todo o 
+            amor que você merece. Eu te amo mais do que palavras podem expressar, e esse amor 
+            só aumenta com o tempo. Estou sempre aqui, com o coração aberto, pronto para 
+            viver cada momento ao seu lado.
+        </p>
+        <a href="https://drive.google.com/file/d/1358kK43AyB2OUnaWMWcBpcpBT3MqbtvI/view?usp=drive_link" target="_blank" style="color: black;">Clique aqui para uma surpresa!</a>
+        <br>
+        <button class="button" onclick="proximaAba()">Próxima Aba</button>
+    </div>
+
+    <script>
+        function proximaAba() {
+            window.open('lua.html', '_blank');
+        }
+    </script>
+</body>
+</html>
